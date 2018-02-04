@@ -1,0 +1,118 @@
+/*@import url('https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i');*/
+
+@import url('https://fonts.googleapis.com/css?family=Luckiest+Guy');
+
+*
+
+
+.container {
+    width: 100%;
+    margin: auto;
+    font-weight: 900;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 0 0 200px;
+}
+
+/*.take-input {
+  margin: 50px 0 0;
+}
+
+.take-input input {
+  width: 400px;
+  height: 35px;
+  padding: 0 10px;
+  border-radius: 5px;
+  border: 1px solid #ececec;
+  margin: 0 15px 0 0;
+  font-size: 15px;
+}*/
+
+
+
+.animate {
+    font-size: 120px;
+    margin: 100px 0 0;
+    border-bottom: 2px solid #ccc;
+    font-family: 'Luckiest Guy', cursive;
+}
+
+.animate span {
+    display: inline-block;
+}
+
+a.repeat {
+  display: inline-block;
+  font-size: 12px;
+  text-transform: none;
+  text-decoration: none;
+  color: orange;
+  padding: 5px 12px;
+  border: 1px solid #cecece;
+  font-weight: normal;
+  margin: 0 0 0 50px;
+  border-radius: 5px;
+  position: relative;
+  bottom: 15px;
+}
+
+.animate span:nth-of-type(2) {
+    animation-delay: .05s;
+}
+.animate span:nth-of-type(3) {
+    animation-delay: .1s;
+}
+.animate span:nth-of-type(4) {
+    animation-delay: .15s;
+}
+.animate span:nth-of-type(5) {
+    animation-delay: .2s;
+}
+.animate span:nth-of-type(6) {
+    animation-delay: .25s;
+}
+.animate span:nth-of-type(7) {
+    animation-delay: .3s;
+}
+.animate span:nth-of-type(8) {
+    animation-delay: .35s;
+}
+.animate span:nth-of-type(9) {
+    animation-delay: .4s;
+}
+.animate span:nth-of-type(10) {
+    animation-delay: .45s;
+}
+.animate span:nth-of-type(11) {
+    animation-delay: .5s;
+}
+.animate span:nth-of-type(12) {
+    animation-delay: .55s;
+}
+.animate span:nth-of-type(13) {
+    animation-delay: .6s;
+}
+.animate span:nth-of-type(14) {
+    animation-delay: .65s;
+}
+
+
+/* Animation Two */
+
+.two span {
+    color: #A3001F;
+    opacity: 0;
+    transform: translate(200px, -100px) scale(2);
+    animation: ballDrop .3s forwards;
+}
+
+@keyframes ballDrop {
+    60% {
+        transform: translate(0, 20px) rotate(-180deg) scale(.5);
+    }
+
+    100% {
+        transform: translate(0) rotate(0deg) scale(1);
+        opacity: 1;
+    }
+}

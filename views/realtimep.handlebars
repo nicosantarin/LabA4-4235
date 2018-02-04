@@ -1,0 +1,63 @@
+<div class="page-header">
+
+
+<body>
+
+
+<!-- <button data-toggle="collapse" data-target="#demo">Press to View</button>
+
+<div id="demo" class="collapse">
+Lorem ipsum dolor text....
+
+<h3>The number is: {{realtimedbObj.data}}</h3>
+
+</div> -->
+
+<div class="container">
+    <div class="card card-danger">
+      <div class="card-header"><h2>Real Time Data Update</h2> 
+</div>
+      <div id="dataupdate" class="card-block">
+        	The number is: {{realtimedbObj.data}}
+
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+
+
+<script type="text/javascript">
+// setInterval(function() { 
+// 	$(document).ready(function(){
+    
+// 		$.ajax({
+			
+// 			data {{realtimedbObj.data}},
+// 			success: function(result){
+// 				location.reload();
+// 				 //$("#dataupdate").html(result);
+// 			}
+// 		})
+
+//          //$("#dataupdate").load('./rtshow'); 
+  
+// });
+// }, 1000);
+
+window.setInterval(function() {
+   //$("#dataupdate").load("./realtime/show");
+   location.reload();
+}, 5000);
+
+</script>
+
+ 
+
+
+
+
+
+
+</div>

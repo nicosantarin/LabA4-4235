@@ -1,0 +1,45 @@
+<div class="page-header">
+<head>
+ <h2>User Settings</h2>
+</head>
+
+<body>
+
+
+
+</body>
+
+
+ 
+
+
+<script>
+//add a user 
+function addUser(req, res){
+	var userAdd = req.params;
+	var id = Number(userAdd.id)
+	var firstname = userAdd.firstname;
+	var lastname = userAdd.lastname;
+	
+	if(users[id]){
+		var reply = {
+			msg: "ID already exists."
+		}
+	}else{
+	users[id] = firstname + " " + lastname;
+
+	//write  to the file
+		var data = JSON.stringify(users);
+		fs.writeFile('mydatabase.json', data, finished);
+		function finished(err){
+			
+		}
+	}
+}
+
+
+</script>
+
+
+
+</div>

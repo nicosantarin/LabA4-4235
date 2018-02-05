@@ -4,8 +4,13 @@
 // server by typing node expresstut.js and then open the
 // browser at localhost:3000 you'll get a 404 error if
 // you haven't defined any routes
-// Import the express module
+// Imports
 var express = require('express');
+var bodyParser = require('body-parser'); 
+var handlebars = require('express-handlebars').create({defaultLayout:'main'});
+//imported filesystem
+var fs = require('file-system');
+
 var app = express();
 
 var router = express.Router()
@@ -14,28 +19,19 @@ var controlRoute = express.Router()
 
 app.disable('x-powered-by');
 
-
-var bodyParser = require('body-parser'); 
-
-var handlebars = require('express-handlebars').create({defaultLayout:'main'});
-
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 
-//imported filesystem
-var fs = require('file-system');
+
  
- // random num generator
- var rNum = Math.floor((Math.random() * 999) + 1);
- let rData = {  
-    data: rNum
-};
+
+
 // //write to json
 // let data = JSON.stringify(rData);  
 // fs.writeFileSync('./realtimedb.json', data);  
 
 
- //global variable of json
+ //global variable of json data
 app.locals.realtimedbObj = require('./realtimedb.json')
 
 
@@ -53,47 +49,46 @@ app.locals.realtimedbObj = require('./realtimedb.json')
 //app.post('/users/:userid',1001);
  
 
-//more imports
+
 //define port to run on
 app.set('port', process.env.PORT || 3000);
-
 app.use(express.static(__dirname + '/public'));
 
-app.use('/', router);
 
+app.use('/', router);
 //middleware bodyparser
 router.use(bodyParser.json())
  
 
-// lab 3 route
+// route to home.handlebars
 router.get('/', (req, res) => {
   res.render('home') 
 });
 
 
 
-
-// go realtime > show
+// route realtimep.handlebars - go realtime > show
 router.use('/realtime', realtimeRoute )
+
+
+//access /realtime/show
 realtimeRoute.get('/show', (req, res) => {
-  //write to json
-let data = JSON.stringify(rData);  
-fs.writeFileSync('./realtimedb.json', data);  
    res.render('realtimep')
 });
- 
+
  //access /realtime/data
 realtimeRoute.get('/data', (req, res) => {
 
- 	
-// let rData = {  
-//     data: rNum
-// };
+ // random number generator
+ var rNum = Math.floor((Math.random() * 999) + 1);
+ let rData = {  
+    data: rNum
+};
+//write random data number to json when is page accessed
+let data = JSON.stringify(rData);  
+fs.writeFileSync('./realtimedb.json', data);  
 
-// let data = JSON.stringify(rData);  
-// fs.writeFileSync('./realtimedb.json', data);  
-
- 
+//load and parse JSON database to a variable
 var text = fs.readFileSync('./realtimedb.json','utf8')
 text = JSON.parse(text)
 //console.log (typeof text)
@@ -102,36 +97,14 @@ res.send(text)
 
 
 
-//go to users control.
+//route to control page
 router.use('/users', controlRoute )
+// access /control/
 controlRoute.get('/control', (req, res) => {
 
 	res.render('usersp')
 });
  
-
-// //middleware example
-// app.use(function(req, res, next){
-//   console.log('Looking for URL : ' + req.url);
-//   next();
-// });
-// //middleware report and throw errors
-// app.get('/junk', function(req, res, next){
-//   console.log('Tried to access /junk');
-//   throw new Error('/junk does\'t exist');
-// });
-// Catches the error and logs it and then continues
-// down the pipeline
-// app.use(function(err, req, res, next){
-//   console.log('Error : ' + err.message);
-//   next();
-// });
-
-
-
-
-
-
 
 
 
@@ -145,19 +118,6 @@ app.use(function(req, res) {
 // Point to 404.handlebars view
   res.render('404');
 });
-// // Custom 500 Page
-// app.use(function(err, req, res, next) {
-//   console.error(err.stack);
-//   res.status(500);
-// // Point to 500.handlebars view
-//   res.render('500');
-// });
-
-
-
-
-
-
 
 
 app.listen(app.get('port'), function(){

@@ -5,7 +5,32 @@
 
 <body>
 
+<form action="/users/submit"  style="border:2px solid black" method="POST">
+  <div class="container">
+    
+    <p>Please use this form to change user settings.</p>
+    <hr>
 
+    <p><label><b>ID Number</b></label>
+    <input type="num" placeholder="Enter ID#" name="id" required></p>
+
+    <p><label><b>First Name</b></label>
+    <input type="text" placeholder="Enter First Name" name="firstname" required></p>
+
+    <p><label><b>Last Name</b></label>
+    <input type="text" placeholder="Enter Last Name" name="lastname" required></p>
+
+  
+
+    <div class="btn-group">
+      <button type="submit" class="btn btn-primary">Create User (POST)</button>
+      <button type="button" class="btn btn-info">Update User aka (PUT)</button>
+      <button type="button" class="btn btn-primary">Delete User</button>
+      <button type="button" class="btn btn-info">Cancel</button>
+    </div>
+    <br>
+  </div>
+</form>
 
 </body>
 
@@ -15,27 +40,27 @@
 
 <script>
 //add a user 
-function addUser(req, res){
-	var userAdd = req.params;
-	var id = Number(userAdd.id)
-	var firstname = userAdd.firstname;
-	var lastname = userAdd.lastname;
+// function addUser(req, res){
+// 	var userAdd = req.params;
+// 	var id = Number(userAdd.id)
+// 	var firstname = userAdd.firstname;
+// 	var lastname = userAdd.lastname;
 	
-	if(users[id]){
-		var reply = {
-			msg: "ID already exists."
-		}
-	}else{
-	users[id] = firstname + " " + lastname;
+// 	if(users[id]){
+// 		var reply = {
+// 			msg: "ID already exists."
+// 		}
+// 	}else{
+// 	users[id] = firstname + " " + lastname;
 
-	//write  to the file
-		var data = JSON.stringify(users);
-		fs.writeFile('mydatabase.json', data, finished);
-		function finished(err){
+// 	//write  to the file
+// 		var data = JSON.stringify(users);
+// 		fs.writeFile('mydatabase.json', data, finished);
+// 		function finished(err){
 			
-		}
-	}
-}
+// 		}
+// 	}
+// }
 
 
 </script>

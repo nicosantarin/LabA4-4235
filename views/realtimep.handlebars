@@ -1,63 +1,53 @@
 <div class="page-header">
-
-
+<!--
 <body>
 
-
-<!-- <button data-toggle="collapse" data-target="#demo">Press to View</button>
-
-<div id="demo" class="collapse">
-Lorem ipsum dolor text....
-
-<h3>The number is: {{realtimedbObj.data}}</h3>
-
-</div> -->
-
-<div class="container">
+  <div class="container">
     <div class="card card-danger">
-      <div class="card-header"><h2>Real Time Data Update</h2> 
-</div>
-      <div id="dataupdate" class="card-block">
-        	The number is: {{realtimedbObj.data}}
-
+      <div class="card-header">
+        <h2>Real Time Data Update Page</h2> 
+      
+        <div id="rtnumber" class="card-block"> -->
+        <!--  The number is: {{realtimedbObj.data}} -->
+ <!--        </div>
       </div>
     </div>
   </div>
-</div>
-
 </body>
+</div> -->
 
-
+<!-- 
 <script type="text/javascript">
-// setInterval(function() { 
-// 	$(document).ready(function(){
-    
-// 		$.ajax({
-			
-// 			data {{realtimedbObj.data}},
-// 			success: function(result){
-// 				location.reload();
-// 				 //$("#dataupdate").html(result);
-// 			}
-// 		})
 
-//          //$("#dataupdate").load('./rtshow'); 
-  
-// });
+//getJSON - https://www.w3schools.com/jquery/ajax_getjson.asp 
+$(document).ready(function(){
+    $.getJSON("text", function(result){
+        $.each(result, function(i, field){
+            $("#rtnumber").append("<h1><b>" + field + "</b></h1>");
+        });
+    });
+});
+
+
+// window.setInterval(function() {
+//    // location.reload();
 // }, 1000);
 
-window.setInterval(function() {
-   //$("#dataupdate").load("./realtime/show");
-   location.reload();
-}, 5000);
+</script> -->
 
-</script>
-
- 
-
-
-
-
-
-
+<h3>Real-time Data Reading Page!</h3>
+<h4>This page will display realtime data from /realtime/data every 5 seconds</h4>
 </div>
+
+<!-- <meta http-equiv="refresh" content="5" /> --> <!-- https://stackoverflow.com/questions/2787679/how-to-reload-page-every-5-second -->
+<script>
+//getJSON - https://www.w3schools.com/jquery/ajax_getjson.asp 
+$(document).ready(function(){
+    $.getJSON('/data', function(result){
+        $.each(result, function(i, field){
+            $("#rtdata").append("<h1><b>" + field + "</b></h1>");
+        });
+    });
+});
+</script>
+<div id="rtdata"><h4>The current random number is: </h4></div>

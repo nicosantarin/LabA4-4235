@@ -1,53 +1,44 @@
 <div class="page-header">
-<!--
-<body>
 
-  <div class="container">
-    <div class="card card-danger">
-      <div class="card-header">
-        <h2>Real Time Data Update Page</h2> 
-      
-        <div id="rtnumber" class="card-block"> -->
-        <!--  The number is: {{realtimedbObj.data}} -->
- <!--        </div>
+
+
+
+  <body>
+
+
+    <div class="container">
+      <div class="card card-danger">
+        <div class="card-header">
+          <h2>Real Time Data Update</h2>
+          <p>Loading Data in Progress...</p>
+        </div>
+        <div id="upDataDiv" >
+
+
+        </div>
       </div>
     </div>
-  </div>
-</body>
-</div> -->
-
-<!-- 
-<script type="text/javascript">
-
-//getJSON - https://www.w3schools.com/jquery/ajax_getjson.asp 
-$(document).ready(function(){
-    $.getJSON("text", function(result){
-        $.each(result, function(i, field){
-            $("#rtnumber").append("<h1><b>" + field + "</b></h1>");
-        });
-    });
-});
-
-
-// window.setInterval(function() {
-//    // location.reload();
-// }, 1000);
-
-</script> -->
-
-<h3>Real-time Data Reading Page!</h3>
-<h4>This page will display realtime data from /realtime/data every 5 seconds</h4>
 </div>
 
-<!-- <meta http-equiv="refresh" content="5" /> --> <!-- https://stackoverflow.com/questions/2787679/how-to-reload-page-every-5-second -->
-<script>
-//getJSON - https://www.w3schools.com/jquery/ajax_getjson.asp 
-$(document).ready(function(){
-    $.getJSON('/data', function(result){
-        $.each(result, function(i, field){
-            $("#rtdata").append("<h1><b>" + field + "</b></h1>");
-        });
-    });
-});
-</script>
-<div id="rtdata"><h4>The current random number is: </h4></div>
+</body>
+
+
+  <script type="text/javascript">
+
+
+    window.setInterval(function() {
+      $(document).ready(function(){
+          $.getJSON("/realtime/data", function(result){
+              $.each(result, function(i, field){
+                  $("#upDataDiv").append("<b>" + field + "</b><br>");
+              });
+          });
+      });
+
+       $("#upDataDiv")
+    }, 5000);
+  </script>
+
+
+
+</div>
